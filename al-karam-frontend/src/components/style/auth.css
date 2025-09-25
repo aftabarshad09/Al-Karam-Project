@@ -1,0 +1,239 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f8f9fa, #e0e0e0, #f4f4f4);
+  height: 100vh;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* === Morphic Background Blobs === */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+body::before {
+  width: 400px;
+  height: 400px;
+  background: #d1d1d1;
+  top: -120px;
+  left: -150px;
+}
+
+body::after {
+  width: 500px;
+  height: 500px;
+  background: #bfbfbf;
+  bottom: -150px;
+  right: -180px;
+}
+
+/* Main container */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card box */
+.auth-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+  backdrop-filter: blur(20px);
+}
+
+/* Logo */
+.auth-logo {
+  width: 90px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+/* Titles */
+.auth-title,
+.auth-box h2 {
+  color: #002147; /* Navy blue */
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* Input fields */
+.auth-box input[type="text"],
+.auth-box input[type="email"],
+.auth-box input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 0.6rem 0;
+  border: 1.5px solid #ddd;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: #fdfdfd;
+}
+
+.auth-box input:focus {
+  border-color: #002147;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 33, 71, 0.25);
+  background: #ffffff;
+}
+
+/* Error text */
+.error-text {
+  font-size: 0.85rem;
+  color: #d9534f;
+  margin: -0.3rem 0 0.6rem;
+  text-align: left;
+}
+
+/* Buttons */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 0.8rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Primary button */
+.btn-primary {
+  background: #002147;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #003366;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 33, 71, 0.35);
+}
+
+/* Google button */
+.btn-google {
+  background: #ffffff;
+  color: #444;
+  border: 1.5px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-google:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(66, 133, 244, 0.25);
+}
+
+.google-icon {
+  font-size: 1.1rem;
+  color: #db4437; /* Google red */
+}
+
+/* Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.2rem 0;
+  color: #666;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.divider:not(:empty)::before {
+  margin-right: 0.8em;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 0.8em;
+}
+
+/* Links */
+.auth-link {
+  color: #002147;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+  color: #003366;
+}
+
+.auth-text {
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin: 0.8rem 0;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.checkbox-group input {
+  margin-right: 0.5rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .auth-box {
+    padding: 2rem 1.5rem;
+  }
+}
