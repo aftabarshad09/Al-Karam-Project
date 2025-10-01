@@ -1,0 +1,54 @@
+/* Styles specific to Wishlist.jsx */
+.wishlist-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.wishlist-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px;
+}
+.wishlist-item .item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.wishlist-item .item-details {
+    flex-grow: 1;
+}
+.wishlist-item .item-name {
+    margin: 0 0 5px 0;
+}
+.wishlist-item .item-price {
+    font-weight: bold;
+    color: #17a2b8;
+}
+.wishlist-item .item-actions {
+    display: flex;
+    gap: 10px;
+    min-width: 220px;
+    justify-content: flex-end;
+}
+.btn-move-to-cart {
+    padding: 8px 12px;
+    font-size: 0.9em;
+}
+/* Responsive for Wishlist */
+@media (max-width: 768px) {
+    .wishlist-item {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .wishlist-item .item-details {
+        min-width: 150px;
+        flex-grow: 0;
+    }
+    .wishlist-item .item-actions {
+        width: 100%;
+        justify-content: space-around;
+        margin-top: 10px;
+    }
+}

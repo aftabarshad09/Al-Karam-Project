@@ -1,0 +1,77 @@
+/* Styles specific to Checkout.jsx */
+.checkout-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+.checkout-form-section, .order-summary-section {
+    padding: 20px;
+}
+.checkout-form-section h2, .order-summary-section h2 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.checkout-form-section label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.checkout-form-section input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.address-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.payment-options {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+.radio-option {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.item-review-list {
+    max-height: 250px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.item-review {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    padding: 8px 0;
+    border-bottom: 1px dashed #eee;
+}
+.item-review:last-child {
+    border-bottom: none;
+}
+.item-review .qty {
+    color: #999;
+}
+.summary-breakdown {
+    padding: 10px 0;
+}
+.summary-breakdown hr {
+    margin: 10px 0;
+}
+/* Responsive for Checkout */
+@media (max-width: 850px) {
+    .checkout-content-grid {
+        grid-template-columns: 1fr;
+    }
+}

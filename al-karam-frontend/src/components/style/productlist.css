@@ -1,0 +1,15 @@
+/* Styles specific to ProductList.jsx */
+.product-list-container {
+    padding: 40px 20px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+.section-header {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.8em;
+    color: #333;
+}
