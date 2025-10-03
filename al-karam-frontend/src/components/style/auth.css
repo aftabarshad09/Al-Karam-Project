@@ -7,7 +7,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
+/* 
 body {
   background: linear-gradient(135deg, #f8f9fa, #e0e0e0, #f4f4f4);
   height: 100vh;
@@ -15,10 +15,10 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   position: relative;
-}
+} */
 
 /* === Morphic Background Blobs === */
-body::before,
+/* body::before,
 body::after {
   content: "";
   position: absolute;
@@ -42,7 +42,7 @@ body::after {
   background: #bfbfbf;
   bottom: -150px;
   right: -180px;
-}
+} */
 
 /* Main container */
 .auth-container {

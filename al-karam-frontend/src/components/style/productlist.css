@@ -1,15 +1,248 @@
-/* Styles specific to ProductList.jsx */
 .product-list-container {
-    padding: 40px 20px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
 }
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
+
+/* Filters Sidebar - REMOVED STICKY POSITION */
+.filters-sidebar {
+  background: rgba(66, 66, 66, 0.15);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  border: 1px solid #e9ecef;
+  /* Removed position: sticky and top properties */
 }
-.section-header {
-    margin-bottom: 30px;
-    text-align: center;
-    font-size: 1.8em;
-    color: #333;
+
+.filter-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
 }
+
+.filter-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.filter-header i {
+  color: #e74c3c;
+  font-size: 1.2rem;
+}
+
+.clear-filters {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-left: auto;
+  transition: color 0.3s ease;
+}
+
+.clear-filters:hover {
+  color: #c0392b;
+}
+
+.filter-group {
+  margin-bottom: 2rem;
+}
+
+.filter-group h4 {
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  background: white;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.filter-select:hover {
+  border-color: #bdc3c7;
+}
+
+.active-filters {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+}
+
+.active-filters h4 {
+  color: #2c3e50;
+  margin: 0 0 0.8rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.filter-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filter-tag {
+  background: white;
+  color: #e74c3c;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid #e74c3c;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Products Grid Section */
+.products-grid-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.products-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.products-header h2 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.results-info {
+  color: #6c757d;
+  font-size: 0.90rem;
+  font-weight: 500;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+  gap: 1.5rem;
+  align-content: start;
+}
+
+/* No Products State */
+.no-products {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #6c757d;
+}
+
+.no-products i {
+  font-size: 4rem;
+  color: #bdc3c7;
+  margin-bottom: 1rem;
+}
+
+.no-products h3 {
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.no-products p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* REMOVED SCROLL BEHAVIOR - Let the entire page scroll naturally */
+.products-grid-section {
+  overflow-y: visible; /* Changed from auto to visible */
+  max-height: none; /* Removed max-height constraint */
+}
+
+.products-grid {
+  padding-right: 0;
+}
+
+/* Responsive adjustments for 4-column layout */
+@media (max-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 cards on smaller screens */
+  }
+}
+
+@media (max-width: 1024px) {
+  .product-list-container {
+    grid-template-columns: 250px 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-list-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .filters-sidebar {
+    margin-bottom: 1rem;
+  }
+
+  .products-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards on tablets */
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .filters-sidebar {
+    padding: 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr; /* 1 card on mobile */
+    gap: 1rem;
+  }
+
+  .products-header h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* REMOVED CUSTOM SCROLLBAR STYLES - Let browser handle natural scrolling */

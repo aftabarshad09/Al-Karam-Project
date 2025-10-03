@@ -1,80 +1,84 @@
-// src/components/ProductCard.jsx
-import React from "react";
-import { useShop } from "../context/ShopContext";
-import "../style/product-card.css"; 
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useShop } from './ShopContext';
+import '../style/productcard.css';
 
-export default function ProductCard({ product }) {
-    const { addToCart, toggleWishlist, isInWishlist } = useShop();
-    
-    const { id, name, price, special_price, image_url, colors = [], sizes = [] } = product;
+const ProductCard = ({ product, onAddToCart, onAddToWishlist }) => {
+  const [isWishlisted, setIsWishlisted] = useState(false);
+  const navigate = useNavigate();
+  const { addToCart, toggleWishlist, isInWishlist } = useShop();
 
-    const wished = isInWishlist(id);
-    const displayPrice = special_price || price;
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    addToCart(product);
+    if (onAddToCart) {
+      onAddToCart(product.id);
+    }
+  };
 
-    const formatPrice = (value) => `$${Number(value).toFixed(2)}`;
+  const handleWishlistClick = (e) => {
+    e.stopPropagation();
+    setIsWishlisted(!isWishlisted);
+    if (onAddToWishlist) {
+      onAddToWishlist(product.id, !isWishlisted);
+    }
+    toggleWishlist(product);
+  };
 
-    return (
-        <div className="card product-card">
-            {/* Wishlist Button (Top Right) */}
-            <button
-                className={`wishlist-btn ${wished ? "active" : ""}`}
-                onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleWishlist(product);
-                }}
-            >
-                <i className={`${wished ? "fas" : "far"} fa-heart`} />
-            </button>
+  const handleProductClick = () => {
+    navigate('/product-detail', { 
+      state: { product } 
+    });
+  };
 
-            {/* Product Image */}
-            <div className="img-wrap">
-                <img className="product-img" src={image_url} alt={name} />
-            </div>
+  const discount = product.specialPrice 
+    ? Math.round(((product.price - product.specialPrice) / product.price) * 100)
+    : 0;
 
-            {/* Card Body */}
-            <div className="card-body">
-                <h3 className="title">{name}</h3>
+  return (
+    <div className="product-card" onClick={handleProductClick}>
+      <div className="product-image-container">
+        <img 
+          src={product.image} 
+          alt={product.name}
+          className="product-image"
+          onError={(e) => {
+            e.target.src = `https://via.placeholder.com/300x300/667eea/ffffff?text=${product.name}`;
+          }}
+        />
+        {discount > 0 && (
+          <span className="discount-badge">-{discount}%</span>
+        )}
+        <button 
+          className={`wishlist-btn ${isWishlisted ? 'wishlisted' : ''}`}
+          onClick={handleWishlistClick}
+        >
+          <i className={`fas ${isWishlisted ? 'fa-heart' : 'fa-heart'}`}></i>
+        </button>
+      </div>
 
-                {/* Price with optional special price */}
-                <div className="price-group">
-                    {special_price && (
-                        <span className="old-price">{formatPrice(price)}</span>
-                    )}
-                    <span className="current-price">
-                        {formatPrice(displayPrice)}
-                    </span>
-                </div>
-
-                {/* Optional Attributes */}
-                {(sizes.length > 0 || colors.length > 0) && (
-                    <div className="attributes-summary">
-                        {sizes.length > 0 && <span>{sizes[0]}...</span>}
-                        {colors.length > 0 && (
-                            <div className="color-list">
-                                {colors.slice(0, 3).map((c, idx) => (
-                                    <span key={idx} className="color-dot" style={{ backgroundColor: c }}></span>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                )}
-                
-
-                {/* Add to Cart Button (Small) */}
-                <div className="actions">
-                    <button
-                        className="add-btn"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            addToCart(product, 1);
-                        }}
-                    >
-                        <i className="fas fa-cart-plus" /> Add
-                    </button>
-                </div>
-            </div>
+      <div className="product-info">
+        <h6 className="product-brand">{product.brand}</h6>
+        <h5 className="product-name">{product.name}</h5>
+        
+        <div className="product-pricing">
+          {product.specialPrice ? (
+            <>
+              <h4 className="special-price">PKR {product.specialPrice.toLocaleString()}</h4>
+              <h6 className="original-price">PKR {product.price.toLocaleString()}</h6>
+            </>
+          ) : (
+            <h4 className="price">PKR {product.price.toLocaleString()}</h4>
+          )}
         </div>
-    );
-}
+
+        <button className="add-to-cart-btn" onClick={handleAddToCart}>
+          <i className="fas fa-shopping-cart"></i>
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;

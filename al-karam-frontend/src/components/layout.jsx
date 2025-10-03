@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link,Outlet, useNavigate, useLocation } from 'react-router-dom';
 import './layout.css';
 import Footer from './pages/Footer';
+import logo from '../asserts/Alkaram_logo.jpg'
 
 const Layout = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -195,7 +196,7 @@ const Layout = () => {
             <div className="logo-section">
               <Link to="/" className="logo-link">
                 <div className="logo-placeholder">
-                  <i className="fas fa-store"></i>
+                  <img src={logo}></img>
                 </div>
                 <div className="store-name">
                   <h1>Al-Karam</h1>

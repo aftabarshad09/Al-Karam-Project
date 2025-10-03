@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../style/Footer.css';
+import logo from '../../asserts/Alkaram_logo.jpg'
+
 
 const Footer = () => {
   return (
@@ -12,7 +14,7 @@ const Footer = () => {
           <div className="footer-section">
             <div className="footer-logo">
               <div className="logo-placeholder">
-                <i className="fas fa-store"></i>
+                <img src={logo}></img>
               </div>
               <div className="footer-store-name">
                 <h3>Al-Karam</h3>
