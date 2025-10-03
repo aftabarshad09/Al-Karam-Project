@@ -2,8 +2,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from "react-router-dom"; // Add Outlet if you want to use it in App.js for non-Layout routes
 
-import SignUp from "./components/signup";
-import Login from "./components/login";
+import SignUp from "./components/SignUp";
+import Login from "./components/SignIn";
 import ForgotPassword from "./components/forget-password";
 import Home from "./components/pages/home";
 import Layout from "./components/layout";
